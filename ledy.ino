@@ -5,7 +5,7 @@
 
 #define LED_PIN     6
 #define LED_COUNT  300
-#define BRIGHTNESS  200
+#define BRIGHTNESS  255
 Adafruit_NeoPixel ledy(LED_COUNT, LED_PIN, NEO_GRBW + NEO_KHZ800);
 
 
@@ -15,8 +15,8 @@ void wylacz(int wait,int mode,int mnoznik=1); //Argumenty ( tryb (0-nagly, 1- pr
 //@@@@@@@@@@@@@@@@@@@@@@@
 
 
-const int buttonPin = 10; // JEZELI PIN 10 ma stan wysoki, to uruchom funkcje swiatlo_progres(), jezeli niski - wylacz()
-int buttonState=0;
+const static int buttonPin = 10; // JEZELI PIN 10 ma stan wysoki, to uruchom funkcje swiatlo_progres(), jezeli niski - wylacz()
+static int buttonState=0;
 
 
 
@@ -25,7 +25,7 @@ void setup() {
 
   ledy.begin();           // INITIALIZE NeoPixel strip object (REQUIRED)
   ledy.show();            // Turn OFF all pixels ASAP
-  ledy.setBrightness(BRIGHTNESS); // Set BRIGHTNESS to about 1/5 (max = 255)
+  ledy.setBrightness(BRIGHTNESS/5); // Set BRIGHTNESS to about 1/5 (max = 255)
   pinMode(buttonPin, INPUT); //PRZYDZIELENIE PINU 10 JAKO INPUT
 }
 
@@ -40,7 +40,7 @@ void loop() {
  {
    wylacz(1,0,5);
  }
-  //fala(25407); // KOLOR od 0 do 65535 -> Baleta barw HSV 
+  //fala(25407); // KOLOR od 0 do 65535 -> Paleta barw HSV 
 
 }
 
